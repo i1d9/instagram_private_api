@@ -67,6 +67,14 @@ class FriendshipsEndpointsMixin(object):
             [ClientCompatPatch.list_user(u, drop_incompat_keys=self.drop_incompat_keys)
              for u in res.get('users', [])]
         return res
+        
+    def get_presence(self):
+        """
+        Get presence of people from direct messages
+        :return:
+        """
+        res = self._call_api('direct_v2/get_presence/')
+        return res
 
     def friendships_pending(self):
         """Get pending follow requests"""
